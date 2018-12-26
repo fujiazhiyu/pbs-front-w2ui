@@ -1,0 +1,87 @@
+#tags-panel {
+    text-align: left;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 200px;
+    border: 0px;
+}
+
+/* .w2ui-field>label {
+    width: auto;
+} */
+
+.w2ui-field > div {
+    margin-left: auto;
+}
+
+.w2ui-field-helper.w2ui-list li[index] {
+    /* 标签高度 */
+    height: 30px;
+    vertical-align: middle;
+    background-color: #fff;
+    border-color: red;
+    border-radius: 6px;
+    /* padding-top: 8px; */
+    /* width: 100%; */
+    /* height: 100%; */
+    display: flex;
+    /* 关闭按钮排列在右侧 */
+    flex-direction: row-reverse;
+    /* 进度条效果排在下方 */
+    align-items: flex-end;
+    /* 标签之间不重叠 */
+    margin: 3px;
+}
+
+.progress-bar-vertical {
+    /* 已经被 .w2ui-field-helper.w2ui-list li[index] 取代了 */
+}
+
+.progress-bar {
+    width: 100%;
+    /* 让隐藏文字撑开容器,隐藏的标签文字字号 */
+    font-size: 10px;
+}
+
+.progress-bar-danger {
+    /* 标签背景色,需要修改 */
+    background-color: rgba(255, 232, 232, 1);
+}
+
+.tag-name {
+    /* 使标签文字和进度条重叠 */
+    position: absolute;
+    /* 标签文字上移15,根据li的高度来调整 */
+    padding-bottom: 8px;
+    /* 标签文字颜色 */
+    color: #000;
+    /* 显示的标签文字的字号 */
+    font-size: 10px;
+}
+
+.w2ui-list ul li .w2ui-list-remove {
+    /* 调整关闭按钮位置,上拉34,右拉6 */
+    margin: -22px 0 0 7px;
+    background-color: #fff;
+    border: 1px solid gray;
+    /* 使关闭按钮和进度条重叠 */
+    position: absolute;
+}
+
+.w2ui-list ul li .w2ui-list-remove:before {
+    /* 在关闭按钮的 X 前垫几个像素 */
+    top: -1px;
+    left: 4px;
+}
+
+.w2ui-list ul li .w2ui-list-remove:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(25, 25, 25, 1);
+}
+
+.w2ui-field-helper.w2ui-list {
+    /* 使标签不受外层遮挡边缘 */
+    overflow: inherit !important;
+    /* 去掉input外层边框 */
+    border: 0px;
+}

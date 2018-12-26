@@ -1,0 +1,15 @@
+.layui-table-tips-c {
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.layui-table-cell {
+    padding: 0;
+}
+
+.layui-table-view .layui-table td, .layui-table-view .layui-table th{
+    padding: 0;
+}

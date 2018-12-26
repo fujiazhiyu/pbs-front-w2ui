@@ -1,0 +1,63 @@
+.w2ui-field input {
+    width: 80%;
+}
+
+.w2ui-field > div > span {
+    margin-left: 0px;
+}
+
+.w2ui-field.w2ui-span3.input-samll input {
+    padding: 3px;
+}
+
+.w2ui-select {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAALCAQAAACnzwd+AAAAcklEQ…2OOOOj3Yi43kMKs9sZknofOexqZ8npMygwWZTX51CipP+YA1OiZJbYYg9lAAAAAElFTkSuQmCC),-webkit-linear-gradient(top,#fff 20%,#fff 50%,#fff 52%,#fff 100%);
+}
+
+.front-label {
+    width: 30px !important;
+    height: auto;
+}
+
+.polygon-label {
+    margin-top: 3px !important;
+}
+
+.w2ui-field.w2ui-span3 > div {
+    margin-left: 38px;
+}
+
+#control-panel-legend {
+    font-size: 17px;
+}
+
+.polygon-border {
+    height: auto;
+    padding: 3px 6px;
+}
+
+#overview-focus {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#time-period {
+
+}
+
+#kcd-controller {
+    margin: 0;
+}
+
+.layui-breadcrumb > li {
+  display: inline-block;
+}
+
+.time-period-slider {
+    width: 90%;
+    margin: 10px 0 10px 10px;
+}
+
+.control-buttons {
+    margin: 20px 0 0 0;
+}

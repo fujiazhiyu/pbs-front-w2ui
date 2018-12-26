@@ -1,0 +1,27 @@
+.ribbon {
+    width: 100%;
+    height: 11px;
+}
+
+.progress {
+    /* width值有含义可调整,代表solution对当前区域的fitness,可以针对每一条设置 */
+    /* width: 100%; */
+    margin-bottom: 0px;
+    border-radius: 1px;
+    height: 11px;
+    background-color: #f0f0f0;
+}
+
+.progress-bar {
+    background-color: #999;
+}
+
+#details-grid {
+    width: 100%;
+    height: 220px;
+}
+
+#details-grid td, #details-grid th {
+    padding: 2px 2px;
+    line-height: 12px;
+}

@@ -1,0 +1,49 @@
+.preview-panel {
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#solutions-panel-legend a{
+    font-size: 17px;
+    color: #333 !important;
+}
+
+#compare-button {
+    border-radius: 8px;
+}
+
+#solutions-thumbnail {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: center; */
+}
+
+.boundary {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 15px 13px;
+}
+
+.boundary-newone {
+    border: 1px dashed #ccc;
+}
+
+.boundary-selecting {
+    border: 2px solid #aaa;
+}
+
+#solutions-thumbnail .layui-icon {
+    font-size: 45px;
+    margin: 30px 40px;
+    color: #aaa;
+}
+
+#solutions-thumbnail .iconfont {
+    font-size: 58px;
+    margin: 20px 22px;
+    color: #aaa;
+}

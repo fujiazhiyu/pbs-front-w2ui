@@ -1,32 +1,59 @@
-var pickKeywords = function() {
+var words = ['Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'];
+
+
+var setThemesKeywordsPanel = function() {
     console.log("themes_keywords executes");
     var themes_keywords = $("#themes-keywords").load("./views/subviews/themes-keywords.html", function() {
-        setTagPanel('tags-panel', 'tags-field');
+        initPanel('tags-panel', 'tags-field');
+        $('#tags-panel').on('drop', handle_drop);
+        $('#tags-panel').on('dragover', handle_over);
+        $('#tags-panel').on('dragenter', handle_enter);
     });
 }
 
-var setTagPanel = function(id, fieldname) {
-    // var pstyle = 'background-color: #fff; height: 200px;';
-    var people = ['George Washington', 'John Adams', 'Thomas Jefferson', 'James Buchanan', 'Warren Harding', 'Gerald Ford', 'Calvin Coolidge'];
+
+var handle_drop = function(event) {
+    event.preventDefault();
+    // event.stopPropagation();
+    var domId = event.originalEvent.dataTransfer.getData('text/plain');
+    setTag2Panel('tags-panel', domId);
+    // 降低原panel中keyword的opacity,设置元素被选中
+    $('#'+domId).attr('isselected', true).css("opacity", 0.6);
+    console.log("drop event");
+}
+
+
+var setTag2Panel = function(panelId, domId) {
+    var tagPanel = $('#'+ panelId +' input[type=enum]');
+    var currentData = tagPanel.data('selected');
+    var length = currentData.push({id: domId, text: $('#'+domId).html()});
+    currentData = tagPanel.data('selected', currentData).w2field().refresh();
+    return currentData;
+}
+
+
+var handle_over = function(event) {
+    event.preventDefault();
+}
+
+
+var handle_enter = function(event) {
+    event.preventDefault();
+}
+
+
+var initPanel = function(id, fieldname) {
     $('#' + id).w2form({
         name: id,
-        // style: pstyle,
         fields: [{
             field: fieldname,
             type: 'enum',
-            // required: true,
             options: {
-                items: people,
-                openOnFocus: true,
-                style: '',
-                selected: [{
-                    id: 0,
-                    text: 'John Adams'
-                }],
-                onAdd: function(event) {
-                    event.item.style = 'background-color: rgba(255,255,255, 1); border: 1px solid red; padding: 0;';
-                },
+                items: words,
+                openOnFocus: false,
+                filter: false,
                 renderItem: function(item, index, remove) {
+                    item.style = 'background-color: rgba(255,255,255, 1); border: 1px solid red; padding: 0;';
                     var pb = $(".w2ui-field-helper.w2ui-list").find("li[index=" + index + "]").find(".progress-bar");
                     if (pb.length) {
                         item.count = parseInt(pb[0].style.height.slice(0, -1));
@@ -43,15 +70,21 @@ var setTagPanel = function(id, fieldname) {
                         '</p>' +
                         remove;
                     return html;
+                },
+                onRemove: function(event) {
+                    $('#'+ event.item.id).attr('isselected', false).css("opacity", 1);
+                },
+                renderDrop: function() {
+
                 }
             }
         }]
     });
 
-    Tagscroll();
+    tagScroll();
 };
 
-var Tagscroll = function() {
+var tagScroll = function() {
     $(".w2ui-field-helper.w2ui-list").on("mousewheel", "li[index]", function(innerevent) {
         var pb = $(this).find(".progress-bar");
         var pbvalue = parseInt(pb[0].style.height.slice(0, -1));
@@ -63,4 +96,4 @@ var Tagscroll = function() {
     });
 };
 
-export default pickKeywords;
+export default setThemesKeywordsPanel;

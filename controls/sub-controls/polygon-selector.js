@@ -1,4 +1,4 @@
-import pickKeywords from "./theme-keywords.js";
+import setThemesKeywordsPanel from "./theme-keywords.js";
 import selectTimePeriod from "./time-period.js";
 import kws_cts_dts_control from "./kws-cts-dts-controller.js";
 import addControlButtons from "./control-buttons.js";
@@ -12,7 +12,7 @@ var selectPolygon = function(itemlist) {
         layui.use('element', function(){
             var element = layui.element;
         });
-        pickKeywords();
+        setThemesKeywordsPanel();
         selectTimePeriod();
         kws_cts_dts_control();
         addControlButtons();

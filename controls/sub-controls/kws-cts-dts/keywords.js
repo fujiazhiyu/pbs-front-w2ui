@@ -1,23 +1,35 @@
 var word_array = [
-    {text: "Lorem", weight: 15},
-    {text: "Ipsum", weight: 9, link: "http://jquery.com/"},
-    {text: "Dolor", weight: 6, html: {title: "I can haz any html attribute"}},
-    {text: "Sit", weight: 7},
-    {text: "Amet", weight: 5}
+    {text: "Lorem", weight: 15, html: {draggable: "true"} },
+    {text: "Ipsum", weight: 9, html: {draggable: "true"}},
+    {text: "Dolor", weight: 6, html: {draggable: "true"}},
+    {text: "Sit", weight: 7, html: {draggable: "true"}},
+    {text: "Amet", weight: 5, html: {draggable: "true"}}
 ];
 
 var initKeywordsInfo = (function() {
     var called = false;
     return function(word_array) {
         if (!called) {
-            console.log("???");
             $("#keywords-cloud").jQCloud(word_array);
+            $("#keywords-cloud").on('dragstart', handle_start)
+            $("#keywords-cloud").css("width", $("#keywords-cloud").parent().outerWidth(true));
             called = true;
         } else {
             console.log("already executes initKeywordsInfo");
         }
     };
 })();
+
+
+var handle_start = function(event) {
+    console.log("drag start");
+    var isSelected = $(event.target).attr('isselected') === 'true' ? true : false;
+    if (!isSelected) {
+        event.originalEvent.dataTransfer.setData('text/plain', event.target.id);
+    } else {
+        event.preventDefault();
+    }
+}
 
 
 var hideKeywordsInfo = function() {

@@ -1,16 +1,13 @@
-var word_array = [
-    {text: "Lorem", weight: 15, html: {draggable: "true"} },
-    {text: "Ipsum", weight: 9, html: {draggable: "true"}},
-    {text: "Dolor", weight: 6, html: {draggable: "true"}},
-    {text: "Sit", weight: 7, html: {draggable: "true"}},
-    {text: "Amet", weight: 5, html: {draggable: "true"}}
-];
+import * as snapshot from '../../utils/snapshot.js';
+
 
 var initKeywordsInfo = (function() {
     var called = false;
     return function(word_array) {
         if (!called) {
-            $("#keywords-cloud").jQCloud(word_array);
+            $("#keywords-cloud").jQCloud(word_array, {afterCloudRender: function(a) {
+                snapshot.currentStatus.keywords = word_array;
+            }});
             $("#keywords-cloud").on('dragstart', handle_start)
             $("#keywords-cloud").css("width", $("#keywords-cloud").parent().outerWidth(true));
             called = true;
@@ -39,8 +36,12 @@ var hideKeywordsInfo = function() {
 
 
 var showKeywordsInfo = function() {
-    initKeywordsInfo(word_array);
-    $("#keywords-cloud").removeClass("layui-hide");
+    fetch(URL_PREFIX + "/api/keywords/all")
+        .then(response => response.json())
+        .then(data => {
+            initKeywordsInfo(data.records);
+            $("#keywords-cloud").removeClass("layui-hide");
+        });
 }
 
 

@@ -7,7 +7,13 @@ import addControlButtons from "./control-buttons.js";
 var selectPolygon = function(itemlist) {
     console.log("selectPolygon executes");
     var overview_focus = $("#overview-focus").load("./views/subviews/polygon-selections.html", function() {
-        $('input[type=list3]').w2field('list', { items: itemlist });
+        fetch(URL_PREFIX + "/api/areas/preset")
+            .then(response => response.json())
+            .then(data => {
+                $('input[type=list3]').w2field('list', {
+                    items: data.records,
+                });
+            });
         /* 用layui 的徽章功能 */
         layui.use('element', function(){
             var element = layui.element;

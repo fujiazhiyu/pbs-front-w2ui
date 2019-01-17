@@ -1,3 +1,6 @@
+import * as snapshot from '../../utils/snapshot.js';
+
+
 var initContactsInfo = (function() {
     console.log("contacts executes");
     var called = false;
@@ -6,20 +9,24 @@ var initContactsInfo = (function() {
             layui.use('table', function() {
                 var table = layui.table;
                 //第一个实例
-                table.render({
+                var contactTable = table.render({
                     id: 'contacts-table',
                     elem: '#contacts-grid',
                     height: 220,
                     minWidth: 10,
                     width: $("#overview-focus").outerWidth(true),
                     size: "sm",
-                    url: 'http://localhost/chinavis17/pbs-front-w2ui/testdata/testdata.json', //数据接口
+                    url: URL_PREFIX + '/api/infos/contacts', //数据接口
                     cols: [[ //表头
                         {field: 'contacts', title: 'Contacts', width: '20%', sort: true, align: 'center'},
                         {field: 'themes',title: 'Themes',width: '20%' ,sort: true, align: 'center'},
                         {field: 'keywords',title: 'Keywords',width: '45%' , minWidth: 10,sort: true, align: 'center'},
                         {field: 'count',title: 'Count',width: '15%' ,sort: true, align: 'center'}
-                    ]]
+                    ]],
+                    done: function(res, curr, count) {
+                        snapshot.currentStatus.contacts = res.data;
+                        // table.exportFile(contactTable.config.id, res.data, 'csv');
+                    }
                 });
             });
             reloadTableOnLayoutResize();

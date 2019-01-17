@@ -41,8 +41,20 @@
     margin-top: 10px;
 }
 
-#time-period {
+.time-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:center;
+}
 
+.time-input input {
+    width: 22%;
+    height: 24px;
+}
+
+.time-input span {
+    color: #aaa;
 }
 
 #kcd-controller {
@@ -50,7 +62,11 @@
 }
 
 .layui-breadcrumb > li {
-  display: inline-block;
+    display: inline-block;
+}
+
+.layui-field-title {
+    margin-bottom: 10px;
 }
 
 .time-period-slider {

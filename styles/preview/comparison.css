@@ -1,0 +1,80 @@
+.concentric-circles-container {
+    width: 40px;
+    height: 40px;
+    display: flex;
+}
+
+.concentric-circles {
+    background-color: #fff;
+    display: flex;
+    border: 1px solid #aaa;
+    margin: auto;
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.solution-indicator {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.solution-indicator div{
+    height: 20px;
+    width: 60px;
+    background-color: #ddd;
+    border-radius: 3px;
+}
+
+.solution-indicator .solution-div2 {
+    height: 30px;
+    width: 90px;
+    background-color: #ccc;
+}
+
+.solution-indicator .solution-div1 {
+    height: 10px;
+    width: 40px;
+    background-color: #eee;
+}
+
+.foldback {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.foldback div {
+    margin-left: -16px;
+}
+
+.slopingside-left {
+    height:0px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    width: 20px;
+    margin-bottom: -2px;
+    transform:rotate(110deg);
+    -o-transform:rotate(110deg);
+    -moz-transform:rotate(110deg);
+    -webkit-transform:rotate(110deg);
+}
+
+.slopingside-right {
+     height:0px;
+     border: 1px solid #ccc;
+     border-radius: 1px;
+     width: 20px;
+     transform:rotate(-100deg);
+     -o-transform:rotate(-100deg);
+     -moz-transform:rotate(-100deg);
+     -webkit-transform:rotate(-100deg);
+}
+
+#solutions-comparison td {
+    padding: 0px 15px;
+}

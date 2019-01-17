@@ -8,10 +8,16 @@
     <script type="text/javascript" src="http://localhost/chinavis17/assets/dependences/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="http://localhost/chinavis17/assets/dependences/layui/layui.js"></script>
     <!-- <script type="text/javascript" src="./3rd-dependency/bootstrap/js/bootstrap.min.js"></script> -->
-    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.6&key=8014a362dedea969e154001e7f73ef2e"></script>
+
     <script type="text/javascript" src="http://localhost/chinavis17/assets/dependences/leaflet/leaflet.js"></script>
     <script type="text/javascript" src="http://localhost/chinavis17/assets/dependences/w2ui-1.5.rc1/w2ui-1.5.rc1.min.js"></script>
     <script type="text/javascript" src="http://localhost/chinavis17/assets/dependences/jqcloud/jqcloud-1.0.4.min.js"></script>
+    <script type="text/javascript" src="http://localhost/chinavis17/assets/dependences/echarts.js"></script>
+    <script type="text/javascript" src="http://localhost/chinavis17/pbs-front-w2ui/global.js"></script>
+    <script type="text/javascript" src="http://localhost/chinavis17/assets/dependences/hull.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.6&key=8014a362dedea969e154001e7f73ef2e&plugin=AMap.DistrictSearch,AMap.CustomLayer"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/ui/1.0/main.js"></script>
+
     <link rel="stylesheet" type="text/css" href="http://localhost/chinavis17/assets/dependences/leaflet/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="http://localhost/chinavis17/assets/dependences/amap-main1119.css" />
     <link rel="stylesheet" type="text/css" href="http://localhost/chinavis17/assets/dependences/w2ui-1.5.rc1/w2ui-1.5.rc1.min.css" />
@@ -25,9 +31,12 @@
     <link rel="stylesheet" type="text/css" href="./styles/contacts-table.css" />
     <link rel="stylesheet" type="text/css" href="./styles/details-grid.css" />
     <link rel="stylesheet" type="text/css" href="./styles/preview/preview.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/preview/comparison.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/main/map.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/global.css" />
 </head>
 
-<body style="height: 100%;">
+<body class="noSelect" style="height: 100%;">
 
     <div id="mylayout" style="width: 100%; height: 100%;"></div>
     <!-- <div id="map-view" style="width: 100%; height: 100%;"></div> -->
@@ -37,6 +46,7 @@
         console.log("index executes");
         main();
     </script>
+
 </body>
 
 </html>

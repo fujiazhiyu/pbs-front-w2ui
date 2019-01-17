@@ -1,3 +1,6 @@
+import * as snapshot from '../../utils/snapshot.js';
+
+
 var detailParameters = {
     'roadNum': 1,
     'color': [175, 238, 238],
@@ -17,6 +20,7 @@ var initDetailsInfo = (function() {
             var oneStreet = combineTimeseriesAndFitness(detailParameters);
             $('#details-grid').find('tbody').append(oneStreet).append(oneStreet);
             called = true;
+            snapshot.currentStatus.details = detailParameters;
         } else {
             console.log("already executes initDetailsInfo");
         }

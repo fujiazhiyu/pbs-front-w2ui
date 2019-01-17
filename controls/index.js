@@ -1,10 +1,10 @@
-import mapview from './map.js';
+import * as mapview from './map.js';
 import * as control from './control-panel.js';
 import * as solutions from './solutions.js';
 
 
 export default function main() {
-    $(function () {
+    $(window).load(function () {
         var pstyle = 'background-color: #FFF; border: 2px solid #eee; padding: 1px;';
         // var mapview = $("#map-view").load("./views/map.html");
         $('#mylayout').w2layout({
@@ -20,7 +20,7 @@ export default function main() {
         });
 
         w2ui['layout'].load('main', './views/map.html', 'pop-in', function() {
-            mapview();
+            mapview.initMapview();
         });
         w2ui['layout'].load('left', './views/control.html', 'pop-in', function() {
             control.InitControlPanel('list1', 'list2');

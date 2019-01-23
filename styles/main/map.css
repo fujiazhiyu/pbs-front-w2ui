@@ -1,21 +1,3 @@
-.themes-layer {
-    width: 100%;
-    height: 60px;
-    position: absolute;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.1);
-    z-index: 999;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.theme-area-chart {
-    width: 15%;
-    height: 50px;
-    margin: 0 2px;
-}
-
 #mapid {
     width: 100%;
     height: 100%;
@@ -36,7 +18,7 @@ canvas {
 .cursor-wait{
     cursor: wait;
 }
-
+/*
 #loadingTip {
     position: absolute;
     z-index: 9999;
@@ -46,4 +28,4 @@ canvas {
     background: #ccc;
     color: #fff;
     font-size: 14px;
-}
+} */

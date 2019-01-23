@@ -19,13 +19,18 @@ var option = {
         left: 'center',
         text: '',
         textStyle: {
-            fontSize: 10,
+            fontSize: 11,
             top: 0,
-            fontWeight: 'lighter',
+            fontWeight: 'bolder',
             fontFamily: 'monospace'
         }
     },
-    grid: {x: '1%', y: '30%', width: '99%', height: '90%'},
+    grid: {
+        x: '1%',
+        y: '20%',
+        width: '99%',
+        height: '78%'
+    },
     xAxis: {
         type: 'category',
         show: false,
@@ -34,46 +39,88 @@ var option = {
     },
     yAxis: {
         show: false,
+        min: 0,
+        // max: 3600,
     },
-    series: [{
-        type: 'line',
-        smooth: true,
-        symbol: 'none',
-        sampling: 'average',
-        itemStyle: {
-            normal: {
-                color: 'rgb(200, 220, 230)'
-            }
-        },
-        areaStyle: {
-            normal: {
-                color: 'rgba(200, 220, 230, 0.5)'
-            }
-        },
-        data: []
-    }]
+    series: []
+};
+
+var serie = {
+    type: 'line',
+    smooth: true,
+    symbol: 'none',
+    sampling: 'average',
+    itemStyle: {
+        normal: {
+            color: 'rgb(200, 220, 230)',
+        }
+    },
+    lineStyle: {
+        width: 1
+    },
+    areaStyle: {
+        normal: {
+            color: 'rgba(200, 220, 230, 0.5)'
+        }
+    },
+    data: []
 };
 
 
-var createRandomArray = function() {
-    var data = Array.from(new Array(24));
-    return data.map(() => Math.round((Math.random() - 0.5) * 100) + 100);
-};
+var initThemeLayer = function(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            var mycharts = [];
+            $('.themes-layer').empty();
+            clusterNames.forEach(function(theme, idx) {
+                $('.themes-layer').append('<div id="theme-' + idx + '" class="theme-area-chart theme-selected"></div>');
+                var mychart = echarts.init(document.getElementById('theme-' + idx));
+                option.series = [];
+                data.data[idx].map(function(val) {
+                    // 深拷贝serie对象, 因为每次都要得到一个新的serie对象, 否则series里的serie都一样
+                    var newserie = JSON.parse(JSON.stringify(serie));
+                    newserie.itemStyle.normal.color = themeColors[val.subTheme];
+                    newserie.areaStyle.normal.color = themeColors[val.subTheme]+'1F';
+                    newserie.data = val.hours;
+                    option.series.push(newserie);
+                });
+                option.title.text = theme;
+                bindSelectEvents(mychart, idx);
+                mychart.setOption(option);
+                mycharts.push(mychart);
+            });
+            echarts.connect(mycharts);
+        });
+}
 
-
-var initThemeLayer = function() {
-    var themes = Array.from(new Array(6), (val, idx) => idx);
-    var mycharts = [];
-    themes.forEach(function(el) {
-        $('.themes-layer').append('<div id="theme-' + el + '" class="theme-area-chart"></div>');
-        var mychart = echarts.init(document.getElementById('theme-' + el));
-        option.series[0].data = createRandomArray();
-        option.title.text = 'theme' + el;
-        mychart.setOption(option);
-        mycharts.push(mychart);
+/**
+ * 鼠标选择theme事件处理
+ * @param {Echart Object} chartObject
+ * @param {Number} themeIndex 主题序号
+ */
+var bindSelectEvents = function(chartObject, themeIndex) {
+    $('#theme-'+themeIndex).on('click', function(e) {
+        var that = $(this);
+        if(that.hasClass('theme-selected')) {
+            that.removeClass('theme-selected');
+            chartObject.setOption({title: {
+                textStyle: {
+                    fontSize: 10,
+                    fontWeight: 'lighter',
+                }
+            }});
+        } else {
+            that.addClass('theme-selected');
+            chartObject.setOption({title: {
+                textStyle: {
+                    fontSize: 11,
+                    fontWeight: 'bolder',
+                }
+            }});
+        }
     });
-    echarts.connect(mycharts);
 }
 
 
-export {initThemeLayer}
+export default initThemeLayer;

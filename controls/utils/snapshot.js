@@ -24,6 +24,12 @@ let validator = {
             case 'details':
                 obj[prop] = value;
                 break;
+            case 'map':
+                obj[prop] = $.extend(value, obj[prop]);
+                break;
+            case 'time_period':
+                obj[prop] = value;
+                break;
             default:
         }
         return true;
@@ -31,7 +37,14 @@ let validator = {
 };
 
 var currentStatus = new Proxy({
-    'saveStatus': false
+    'saveStatus': false,
+    'control': {},
+    'map': {
+        'dataset': "",
+        'themesselected': [true, true, true, true, true],
+        'pointSimplifierIns': null,
+    },
+    'time_period': [20, 200],
 }, validator);
 
 

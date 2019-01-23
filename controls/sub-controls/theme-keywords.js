@@ -63,11 +63,11 @@ var initPanel = function(id, fieldname) {
                     var html = '<div class="progress-bar progress-bar-danger" role="progressbar" style="height: ' +
                         item.count +
                         '%;">' +
-                        '<span class="sr-only"></span><p style="opacity: 0;">' +
+                        '<span class="sr-only"></span><p style="opacity: 0;">&nbsp;' +
                         item.text +
-                        '</p></div><p class="tag-name">' +
+                        '&nbsp;</p></div><p class="tag-name">&nbsp;' +
                         item.text +
-                        '</p>' +
+                        '&nbsp;</p>' +
                         remove;
                     return html;
                 },
@@ -86,6 +86,8 @@ var initPanel = function(id, fieldname) {
 
 var tagScroll = function() {
     $(".w2ui-field-helper.w2ui-list").on("mousewheel", "li[index]", function(innerevent) {
+        innerevent.preventDefault();
+        innerevent.stopPropagation();
         var pb = $(this).find(".progress-bar");
         var pbvalue = parseInt(pb[0].style.height.slice(0, -1));
         pbvalue += (innerevent.originalEvent.wheelDelta > 0 ? 5 : -5);

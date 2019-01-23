@@ -18,9 +18,8 @@ var initContactsInfo = (function() {
                     size: "sm",
                     url: URL_PREFIX + '/api/infos/contacts', //数据接口
                     cols: [[ //表头
-                        {field: 'contacts', title: 'Contacts', width: '20%', sort: true, align: 'center'},
-                        {field: 'themes',title: 'Themes',width: '20%' ,sort: true, align: 'center'},
-                        {field: 'keywords',title: 'Keywords',width: '45%' , minWidth: 10,sort: true, align: 'center'},
+                        {field: 'contacts', title: 'Contacts', width: '60%', sort: true, align: 'center'},
+                        {field: 'theme',title: 'Theme',width: '25%' ,sort: true, align: 'center'},
                         {field: 'count',title: 'Count',width: '15%' ,sort: true, align: 'center'}
                     ]],
                     done: function(res, curr, count) {

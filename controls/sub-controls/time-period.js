@@ -1,3 +1,6 @@
+import * as snapshot from '../utils/snapshot.js';
+
+
 var selectTimePeriod = function() {
     console.log("time_period executes");
     var time_period = $("#time-period").load("./views/subviews/time-period.html", function() {
@@ -17,6 +20,7 @@ var selectTimePeriod = function() {
                 change: function(value){
                     $('#start-time').val(formatTimeTips(value[0]));
                     $('#end-time').val(formatTimeTips(value[1]));
+                    snapshot.currentStatus.time_period = value;
                     $('#end-time').trigger('change');
                 },
                 disabled: false

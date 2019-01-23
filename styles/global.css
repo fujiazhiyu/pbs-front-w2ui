@@ -1,3 +1,4 @@
+/* 使元素不被选中,从而避免背景变蓝效果 */
 .noSelect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

@@ -26,7 +26,6 @@ var initKeywordsInfo = (function() {
 
 
 var handle_start = function(event) {
-    console.log("drag start");
     var isSelected = $(event.target).attr('isselected') === 'true' ? true : false;
     if (!isSelected) {
         event.originalEvent.dataTransfer.setData('text/plain', event.target.id);
@@ -45,7 +44,6 @@ var hideKeywordsInfo = function() {
 var showKeywordsInfo = function() {
     if (!snapshot.currentStatus.map.dataset) return;
     var selectedThemes = [];
-    console.log(snapshot.currentStatus.map.themesselected);
     snapshot.currentStatus.map.themesselected.forEach(function(ele, idx) {
         if(ele) {
             selectedThemes = selectedThemes.concat(clusterIndexes[idx].reduce(function(total, val) {
@@ -53,7 +51,6 @@ var showKeywordsInfo = function() {
             }, []));
         }
     });
-    console.log('selectedThemes...', selectedThemes);
     var newParams = {
         "date": snapshot.currentStatus.map.dataset,
         "themes": selectedThemes.join(','),

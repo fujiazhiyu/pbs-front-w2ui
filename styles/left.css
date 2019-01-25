@@ -76,11 +76,13 @@
 
 #control-buttons {
     width: 100%;
-    position: absolute;
+    position: static;
     bottom: 0;
 }
 
-.control-buttons {
+.control-button {
+    width: 100%;
+    position: absolute;
     margin: 20px 0;
     display: flex;
     flex-direction: row;

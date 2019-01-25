@@ -32,6 +32,7 @@ var initMap = function() {
             loadMessages(map, URL_PREFIX + '/api/messages/points?date=' + dataset, function() {
                 w2ui['layout'].unlock('main');
             });
+            map.setLimitBounds(new AMap.Bounds(new AMap.LngLat(115.89329, 39.59117), new AMap.LngLat(116.887921,40.402081)));
         });
         bindMapButton(map, snapshot.currentStatus);
     });

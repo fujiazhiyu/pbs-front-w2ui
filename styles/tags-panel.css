@@ -19,7 +19,7 @@
     height: 30px;
     vertical-align: middle;
     background-color: #fff;
-    border-color: red;
+    border-color: #aaa;
     border-radius: 6px;
     /* padding-top: 8px; */
     /* width: 100%; */
@@ -53,8 +53,6 @@
     position: absolute;
     /* 标签文字上移15,根据li的高度来调整 */
     padding-bottom: 8px;
-    /* 标签文字颜色 */
-    color: #000;
     /* 显示的标签文字的字号 */
     font-size: 10px;
 }

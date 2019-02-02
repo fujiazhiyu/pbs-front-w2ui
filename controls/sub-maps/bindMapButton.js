@@ -60,17 +60,13 @@ var bindPreferenceSubmit = function(map, status) {
                     return -1;
                 });
                 $.unique(pointsSelected.sort()).shift(); // 修改了pointsSelected
+
                 var params = {
                     "dataset": $('input[type=list1]').val(),
                     "themes": status.map.themesselected,
                     "time_period": status.time_period,
-                    "keywords_weights": w2ui['tags-panel'].get('tags-field').$el.data('selected').map(function(tag) {
-                        return {
-                            "keyword": tag.text,
-                            "weight": tag.count
-                        };
-                    }),
-                    "selected_points": pointsSelected
+                    "keywords_weights": confirmTagValues(),
+                    "selected_points": pointsSelected.sort()
                 };
                 console.log("submission end...");
                 fetch("http://127.0.0.1:5000/api/paths/recommend", {
@@ -88,6 +84,16 @@ var bindPreferenceSubmit = function(map, status) {
             }
         });
     });
+}
+
+
+var confirmTagValues = function() {
+    $('input[type=enum][name=tags-field]').data('selected',
+        $('input[type=enum][name=tags-field]').data('selected')).change();
+    return $('input[type=enum][name=tags-field]').data('selected').reduce(function(total, tag) {
+        total[tag.text] = tag.count;
+        return total;
+    }, {});
 }
 
 

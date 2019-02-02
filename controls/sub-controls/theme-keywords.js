@@ -1,4 +1,4 @@
-var words = ['Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'];
+var words = ['急用钱', '广告', '非法服务', '钓鱼诈骗', '恶意骚扰'];
 
 
 var setThemesKeywordsPanel = function() {
@@ -26,7 +26,7 @@ var handle_drop = function(event) {
 var setTag2Panel = function(panelId, domId) {
     var tagPanel = $('#'+ panelId +' input[type=enum]');
     var currentData = tagPanel.data('selected');
-    var length = currentData.push({id: domId, text: $('#'+domId).html()});
+    var length = currentData.push({id: domId, text: $('#'+domId).html(), color: $('#'+domId).css('color')});
     currentData = tagPanel.data('selected', currentData).w2field().refresh();
     return currentData;
 }
@@ -53,16 +53,18 @@ var initPanel = function(id, fieldname) {
                 openOnFocus: false,
                 filter: false,
                 renderItem: function(item, index, remove) {
-                    item.style = 'background-color: rgba(255,255,255, 1); border: 1px solid red; padding: 0;';
+                    item.style = 'border: 1px solid ' + item.color + '; padding: 0;';
                     var pb = $(".w2ui-field-helper.w2ui-list").find("li[index=" + index + "]").find(".progress-bar");
                     if (pb.length) {
                         item.count = parseInt(pb[0].style.height.slice(0, -1));
                     } else {
                         item.count = 50;
                     }
-                    var html = '<div class="progress-bar progress-bar-danger" role="progressbar" style="height: ' +
+                    var backgroundColor = item.color.split(' ');
+                    backgroundColor.splice(-1, 1, '0.15)')
+                    var html = '<div class="progress-bar" role="progressbar" style="height: ' +
                         item.count +
-                        '%;">' +
+                        '%; background-color: ' + backgroundColor.join(' ') + '">' +
                         '<span class="sr-only"></span><p style="opacity: 0;">&nbsp;' +
                         item.text +
                         '&nbsp;</p></div><p class="tag-name">&nbsp;' +
@@ -73,9 +75,6 @@ var initPanel = function(id, fieldname) {
                 },
                 onRemove: function(event) {
                     $('#'+ event.item.id).attr('isselected', false).css("opacity", 1);
-                },
-                renderDrop: function() {
-
                 }
             }
         }]
